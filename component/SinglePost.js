@@ -1,7 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, navigation } from "react-native";
 
-function SinglePost({ titles, image, bolgerImage }) {
+function SinglePost({ titles, image, blogerImage, name }) {
   return (
     <View style={styles.parentContainer}>
       <View style={styles.container}>
@@ -14,6 +14,10 @@ function SinglePost({ titles, image, bolgerImage }) {
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.text}>{titles}</Text>
+          <View style={styles.profileContainer}>
+            <Image source={blogerImage} style={styles.profile} />
+            <Text style={styles.name}>{name}</Text>
+          </View>
         </View>
       </View>
     </View>
@@ -28,7 +32,7 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: "white",
-    height: 170,
+    height: 135,
     width: 350,
     alignSelf: "center",
   },
@@ -58,7 +62,24 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: "bold",
-    fontSize: 13,
+    fontSize: 15,
     marginRight: 15,
+    fontFamily: "JuliusSansOne-Regular",
+  },
+  profileContainer: {
+    position: "absolute",
+    top: 76,
+    flexDirection: "row",
+  },
+  profile: {
+    height: 20,
+    width: 20,
+    borderRadius: 10,
+  },
+  name: {
+    fontSize: 10,
+    fontStyle: "italic",
+    marginTop: 3,
+    marginLeft: 5,
   },
 });

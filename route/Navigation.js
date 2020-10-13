@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Blogs from "../component/Blogs";
 import SinglePost from "../component/SinglePost";
+import MainBlogs from "../component/MainBlogs";
 
 const Stack = createStackNavigator();
 
@@ -12,6 +13,7 @@ function Navigation() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Blogs" component={Blogs} />
+        <Stack.Screen name="MainBlogs" component={MainBlogs} />
         <Stack.Screen name="SinglePost" component={SinglePost} />
       </Stack.Navigator>
     </NavigationContainer>
