@@ -1,25 +1,27 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, navigation } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-function SinglePost({ titles, image, blogerImage, name }) {
+function SinglePost({ navigation, titles, image, blogerImage, name }) {
   return (
     <View style={styles.parentContainer}>
-      <View style={styles.container}>
-        <View style={styles.shapeContainer}>
-          <View style={styles.shapeUp}></View>
-          <View style={styles.shapeBottom}></View>
-        </View>
-        <View style={styles.imageContainer}>
-          <Image style={styles.image} source={image} />
-        </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.text}>{titles}</Text>
-          <View style={styles.profileContainer}>
-            <Image source={blogerImage} style={styles.profile} />
-            <Text style={styles.name}>{name}</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("MainBlogs")}>
+        <View style={styles.container}>
+          <View style={styles.shapeContainer}>
+            <View style={styles.shapeUp}></View>
+            <View style={styles.shapeBottom}></View>
+          </View>
+          <View style={styles.imageContainer}>
+            <Image style={styles.image} source={image} />
+          </View>
+          <View style={styles.textContainer}>
+            <Text style={styles.text}>{titles}</Text>
+            <View style={styles.profileContainer}>
+              <Image source={blogerImage} style={styles.profile} />
+              <Text style={styles.name}>{name}</Text>
+            </View>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -58,13 +60,17 @@ const styles = StyleSheet.create({
   textContainer: {
     position: "absolute",
     top: 20,
-    left: 130,
+    left: 120,
+    flex: 1,
+    justifyContent: "center",
+    alignContent: "center",
+    paddingRight: 10,
   },
   text: {
     fontWeight: "bold",
     fontSize: 15,
-    marginRight: 15,
     fontFamily: "JuliusSansOne-Regular",
+    color: "red",
   },
   profileContainer: {
     position: "absolute",
