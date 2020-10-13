@@ -4,7 +4,11 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 function SinglePost({ navigation, titles, image, blogerImage, name }) {
   return (
     <View style={styles.parentContainer}>
-      <TouchableOpacity onPress={() => navigation.navigate("MainBlogs")}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("MainBlogs");
+        }}
+      >
         <View style={styles.container}>
           <View style={styles.shapeContainer}>
             <View style={styles.shapeUp}></View>
