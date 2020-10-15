@@ -1,14 +1,29 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-function SinglePost({ navigation, titles, image, blogerImage, name }) {
+function SinglePost({
+  titles,
+  image,
+  blogerImage,
+  name,
+  navigation,
+  blogs,
+  timeStamp,
+}) {
   return (
-    <View style={styles.parentContainer}>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("MainBlogs");
-        }}
-      >
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate("MainBlogs", {
+          blogs: blogs,
+          image: image,
+          blogerImage: blogerImage,
+          name: name,
+          titles: titles,
+          timeStamp: timeStamp,
+        });
+      }}
+    >
+      <View style={styles.parentContainer}>
         <View style={styles.container}>
           <View style={styles.shapeContainer}>
             <View style={styles.shapeUp}></View>
@@ -22,11 +37,12 @@ function SinglePost({ navigation, titles, image, blogerImage, name }) {
             <View style={styles.profileContainer}>
               <Image source={blogerImage} style={styles.profile} />
               <Text style={styles.name}>{name}</Text>
+              <Text style={styles.timeStamp}>{timeStamp}</Text>
             </View>
           </View>
         </View>
-      </TouchableOpacity>
-    </View>
+      </View>
+    </TouchableOpacity>
   );
 }
 
@@ -43,12 +59,12 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   shapeUp: {
-    backgroundColor: "deeppink",
+    backgroundColor: "green",
     height: 13,
     width: 95,
   },
   shapeBottom: {
-    backgroundColor: "deeppink",
+    backgroundColor: "green",
     height: 95,
     width: 13,
   },
@@ -68,13 +84,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignContent: "center",
-    paddingRight: 10,
   },
   text: {
     fontWeight: "bold",
     fontSize: 15,
     fontFamily: "JuliusSansOne-Regular",
-    color: "red",
+
+    paddingRight: 150,
   },
   profileContainer: {
     position: "absolute",
@@ -91,5 +107,10 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     marginTop: 3,
     marginLeft: 5,
+  },
+  timeStamp: {
+    fontSize: 10,
+    marginHorizontal: 17,
+    marginVertical: 3,
   },
 });
